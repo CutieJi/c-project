@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // GROUP 5
-// NUMBER IN ACTIVITY 1, 4, 7, 10, AND 13
+// CONTRIBUTORS: INGEL, SUMAGAYSAY, AND SUNGA
 
 int main()
 {
