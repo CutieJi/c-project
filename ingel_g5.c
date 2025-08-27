@@ -89,10 +89,17 @@ int main()
     printf("\n\n");
 
     printf("\nArrowDown Input %d:\n\n", input);
-    for(i = 0; i < input / 2; i++) {
-        for(s = 0; s < (input - 3) / 2; s++) printf("_");
+    for(i = 0; i < input / 2; i++)
+    {
+        for(s = 0; s < (input - 3) / 2; s++)
+        {
+            printf("_");
+        }
         printf("***");
-        for(s = 0; s < (input - 3) / 2; s++) printf("_");
+        for(s = 0; s < (input - 3) / 2; s++)
+        {
+            printf("_");
+        }
         printf("\n");
     }
     for(i = input; i >= 1; i -= 2)
