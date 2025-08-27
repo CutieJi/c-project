@@ -1,6 +1,9 @@
 #include <stdio.h>
 
+// GROUP 5
 // NUMBER IN ACTIVITY 1, 4, 7, 10, AND 13
+
+int value = 11;
 
 void line(int value)
 {
@@ -144,8 +147,7 @@ void arrowDown(int value)
 
 int main()
 {
-    int value = 11;
-
+    
     printf("\n");
     printf("DrawLine Input %d:\n", value); line(value);
    // printf("DrawLine Input 7:\n"); line(value2);
