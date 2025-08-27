@@ -81,6 +81,7 @@ void diamond(int value)
         }
         printf("\n");
     }
+    
     for(i = value - 2; i >= 1; i -= 2)
     {
         int spaces = (value - i) / 2;
@@ -143,30 +144,30 @@ void arrowDown(int value)
 
 int main()
 {
-    int value1 = 7;
+    int value = 11;
 
     printf("\n");
-    printf("DrawLine Input 5:\n"); line(value1);
+    printf("DrawLine Input %d:\n", value); line(value);
    // printf("DrawLine Input 7:\n"); line(value2);
 
     printf("\n");
 
-    printf("\nDrawParallelogram Input 5:\n"); parallelogram(value1);
+    printf("\nDrawParallelogram Input %d:\n", value); parallelogram(value);
   //  printf("DrawParallelogram Input 7:\n"); parallelogram(value2);
 
     printf("\n");
 
-    printf("\nDrawIsocelesTriangle Input 5:\n"); isocelesTriangle(value1);
+    printf("\nDrawIsocelesTriangle Input %d:\n", value); isocelesTriangle(value);
   //  printf("DrawIsocelesTriangle Input 7:\n"); isocelesTriangle(value2);
 
     printf("\n");
 
-    printf("\nDrawDiamond Input 5:\n"); diamond(value1);
+    printf("\nDrawDiamond Input %d:\n", value); diamond(value);
 //    printf("DrawDiamond Input 7:\n"); diamond(value2);
 
     printf("\n");
 
-    printf("DrawArrowDown Input 5:\n"); arrowDown(value1);
+    printf("DrawArrowDown Input %d:\n", value); arrowDown(value);
   //  printf("DrawArrowDown Input 7:\n"); arrowDown(value2);
 
     return 0;
