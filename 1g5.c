@@ -37,17 +37,19 @@ void isocelesTriangle(int value)
 {
     int i, j;
 
-    for(i = 0; i < value; i++)
+    for(i = 1; i <= value; i += 2)
     {
-        for(j = 0; j < value - 1 - i; j++)
+        int spaces = (value - i) / 2;
+
+        for(j = 0; j < spaces; j++)
         {
             printf("_");
         }
-        for(j = 0; j < (2 * i + 1); j++)
+        for(j = 0; j < i; j++)
         {
             printf("*");
         }
-        for(j = 0; j < value - 1 - i; j++)
+        for(j = 0; j < spaces; j++)
         {
             printf("_");
         }
