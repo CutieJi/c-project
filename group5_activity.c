@@ -6,7 +6,7 @@
 int main()
 {
     int input = 7;
-    int i, j, s, u;
+    int i, j, s, k, u;
 
     printf("\n1. Line Input %d:\n\n", input); // CONTRIBUTOR: INGEL
     for(i = 0; i < input; i++)
@@ -60,13 +60,18 @@ int main()
     printf("\n\n");
 
     printf("5. Triangle Input %d:\n\n", input); // CONTRIBUTOR: SUMAGAYSAY
-    for(i = 0; i <= input; i++)
+    for(i = 0; i < input; i++)
     {
-        for(s = 0; s < input - i; s++)
+        k = i <= input/2 ? i : input-1-i;
+        for(j = 0; j < k; j++)
+        {
+            printf("_");
+        }
+        for(j = 0; j < input-2*k; j++)
         {
             printf("*");
         }
-        for(u = 0; u < i; u++)
+        for(j = 0; j < k; j++)
         {
             printf("_");
         }
