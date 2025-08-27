@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// GROUP 5
+// NUMBER IN ACTIVITY 1, 4, 7, 10, AND 13
+
 int main()
 {
     int input = 7;
