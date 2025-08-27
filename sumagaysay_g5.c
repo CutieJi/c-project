@@ -5,14 +5,14 @@
 
 int main()
 {
-    int inp;   
+    int input;   
     printf("Enter A Number To Draw:\n");
     printf("=======================\n");
-    scanf("%d", &inp);
+    scanf("%d", &input);
 
     printf("Draw Stripped Line\n\n");
 
-    for (int i = 0; i < inp; i++) {
+    for (int i = 0; i < input; i++) {
         if (i % 2 == 0) {
             printf("*");
         } else {
@@ -23,8 +23,8 @@ int main()
     printf("\n\n");
     printf("Draw Triangle\n\n");
 
-    for (int i = 0; i <= inp; i++) {
-        for (int star = 0; star < inp - i; star++) {
+    for (int i = 0; i <= input; i++) {
+        for (int star = 0; star < input - i; star++) {
             printf("*");
         }
         for (int under = 0; under < i; under++) {
@@ -36,11 +36,11 @@ int main()
 
 printf("\nDraw ReverseIsoceles Triangle\n");
 
-for (int i = 0; i <= inp / 2; i++) {
+for (int i = 0; i <= input / 2; i++) {
 	for (int lunder = 0; lunder < i; lunder++) {
             printf("_");
 	}
-	for (int stars = 0; stars < inp - 2*i; stars++) {
+	for (int stars = 0; stars < input - 2*i; stars++) {
             printf("*");
 	}
 	for (int runder = 0; runder < i; runder++) {
@@ -50,9 +50,9 @@ for (int i = 0; i <= inp / 2; i++) {
 }
 
 printf("\nDraw Zero\n");
-  for (int row = 0; row < inp; row++) {       
-        for (int col = 0; col < inp; col++) {  
-            if (row == 0 || row == inp-1 || col == 0 || col == inp-1) {
+  for (int row = 0; row < input; row++) {       
+        for (int col = 0; col < input; col++) {  
+            if (row == 0 || row == input-1 || col == 0 || col == input-1) {
                 printf("*");   
             } else {
                 printf("_");   
@@ -63,9 +63,9 @@ printf("\nDraw Zero\n");
 
 
 printf("\nDraw X\n");
-for (int i = 0; i < inp; i++) {       
-        for (int zstar = 0; zstar < inp; zstar++) {   
-            if (zstar == i || zstar == inp - i - 1) {
+for (int i = 0; i < input; i++) {       
+        for (int zstar = 0; zstar < input; zstar++) {   
+            if (zstar == i || zstar == input - i - 1) {
                 printf("*");   
             } else {
                 printf("_");   
