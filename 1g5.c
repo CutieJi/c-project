@@ -99,29 +99,73 @@ void diamond(int value)
     }
 }
 
+void arrowDown(int value)
+{
+    int i, j;
+    int mid = value / 2;
+
+    for(i = 0; i < value; i++)
+    {
+        int stars;
+
+        if(i < mid)
+        {
+            stars = 3;
+        }
+        else if(i == mid)
+        {
+            stars = value;
+        }
+        else
+        {
+            stars = value - 2 * (i - mid);
+        }
+
+        int spaces = (value - stars) / 2;
+
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        for(j = 0; j < stars; j++)
+        {
+            printf("*");
+        }
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        printf("\n");
+    }
+}
 
 int main()
 {
-    int value1 = 5, value2 = 7;
+    int value1 = 7;
 
     printf("\n");
     printf("DrawLine Input 5:\n"); line(value1);
-    printf("DrawLine Input 7:\n"); line(value2);
+   // printf("DrawLine Input 7:\n"); line(value2);
 
     printf("\n");
 
     printf("\nDrawParallelogram Input 5:\n"); parallelogram(value1);
-    printf("DrawParallelogram Input 7:\n"); parallelogram(value2);
+  //  printf("DrawParallelogram Input 7:\n"); parallelogram(value2);
 
     printf("\n");
 
     printf("\nDrawIsocelesTriangle Input 5:\n"); isocelesTriangle(value1);
-    printf("DrawIsocelesTriangle Input 7:\n"); isocelesTriangle(value2);
+  //  printf("DrawIsocelesTriangle Input 7:\n"); isocelesTriangle(value2);
 
     printf("\n");
 
     printf("\nDrawDiamond Input 5:\n"); diamond(value1);
-    printf("DrawDiamond Input 7:\n"); diamond(value2);
+//    printf("DrawDiamond Input 7:\n"); diamond(value2);
+
+    printf("\n");
+
+    printf("DrawArrowDown Input 5:\n"); arrowDown(value1);
+  //  printf("DrawArrowDown Input 7:\n"); arrowDown(value2);
 
     return 0;
 }
