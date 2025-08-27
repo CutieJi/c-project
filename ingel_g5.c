@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// NUMBER IN ACTIVITY 1, 4, 7, 10, AND 13
+
 void line(int value)
 {
     int i;
