@@ -25,6 +25,13 @@ int main()
     }
     printf("\n\n");
 
+    printf("\n3. Square Input %d:\n\n", input); // CONTRIBUTOR: SUNGA
+    for (int i = 0; i < input; i++) {
+        for (int j = 0; j < input; j++) printf("*");
+        printf("\n");
+    }
+    printf("\n\n");
+
     printf("\n4. Parallelogram Input %d:\n\n", input); // CONTRIBUTOR: INGEL
     for(i = 0; i < input; i++)
     {
@@ -50,6 +57,18 @@ int main()
             printf("*");
         }
         for (int under = 0; under < i; under++) {
+            printf("_");
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+
+    printf("\n6. ReverseTriangle Input %d:\n\n", input); // CONTRIBUTOR: SUNGA
+    for (int i = 0; i < input; i++) {
+        for (int star = 0; star <= i; star++) {
+            printf("*");
+        }
+        for (int under = 0; under < input - i - 1; under++) {
             printf("_");
         }
         printf("\n");
@@ -84,6 +103,21 @@ int main()
             printf("*");
         }
         for (int runder = 0; runder < i; runder++) {
+            printf("_");
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+
+    printf("\n9. Hourglass Input %d:\n\n", input); // CONTRIBUTOR: SUNGA
+    for (int i = 0; i <= input / 2; i++) {
+        for (int under = 0; under < i; under++) {
+            printf("_");
+        }
+        for (int star = 0; star < input - 2 * i; star++) {
+            printf("*");
+        }
+        for (int under = 0; under < i; under++) {
             printf("_");
         }
         printf("\n");
@@ -137,6 +171,21 @@ int main()
         printf("\n");
     }
     printf("\n\n");
+
+    printf("\n12. ArrowUp Input %d:\n\n", input); // CONTRIBUTOR: SUNGA
+    for (int i = 1; i <= input; i += 2) {
+        for (int s = 0; s < (input - i) / 2; s++) printf("_");
+        for (int j = 0; j < i; j++) printf("*");
+        for (int s = 0; s < (input - i) / 2; s++) printf("_");
+        printf("\n");
+    }
+    for (int i = 0; i < input / 2; i++) {
+        for (int s = 0; s < (input - 3) / 2; s++) printf("_");
+        printf("***");
+        for (int s = 0; s < (input - 3) / 2; s++) printf("_");
+        printf("\n");
+    }
+    printf("\n\n");
     
 
     printf("\n13. ArrowDown Input %d:\n\n", input); // CONTRIBUTOR: INGEL
@@ -182,8 +231,18 @@ int main()
         }
         printf("\n");
     }
-    printf("\n");
+    printf("\n\n");
 
+    printf("\n15. BowTie Input %d:\n\n", input); // CONTRIBUTOR: SUNGA
+    for (int i = 0; i < input; i++) {
+        int row = (i <= input/2) ? i : input - i - 1;
+        for (int j = 0; j <= row; j++) printf("*");
+        for (int j = 0; j < input - 2*(row+1) + 1; j++) printf("_");
+        for (int j = 0; j <= row && input - 2*(row+1) + 1 >= 0; j++) printf("*");
+    printf("\n");
+}
+    printf("\n\n");
+    
     return 0;
 
 }
