@@ -57,6 +57,49 @@ void isocelesTriangle(int value)
     }
 }
 
+void diamond(int value)
+{
+    int i, j;
+
+    for(i = 1; i <= value; i += 2)
+    {
+        int spaces = (value - i) / 2;
+
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        for(j = 0; j < i; j++)
+        {
+            printf("*");
+        }
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        printf("\n");
+    }
+    for(i = value - 2; i >= 1; i -= 2)
+    {
+        int spaces = (value - i) / 2;
+
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        for(j = 0; j < i; j++)
+        {
+            printf("*");
+        }
+        for(j = 0; j < spaces; j++)
+        {
+            printf("_");
+        }
+        printf("\n");
+    }
+}
+
+
 int main()
 {
     int value1 = 5, value2 = 7;
@@ -74,6 +117,11 @@ int main()
 
     printf("\nDrawIsocelesTriangle Input 5:\n"); isocelesTriangle(value1);
     printf("DrawIsocelesTriangle Input 7:\n"); isocelesTriangle(value2);
+
+    printf("\n");
+
+    printf("\nDrawDiamond Input 5:\n"); diamond(value1);
+    printf("DrawDiamond Input 7:\n"); diamond(value2);
 
     return 0;
 }
