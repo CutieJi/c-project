@@ -237,15 +237,20 @@ int main()
     printf("\n\n");
     
 
-    printf("\n13. ArrowDown Input %d:\n\n", input); // CONTRIBUTOR: INGEL
+    printf("\n13. ArrowDown Input %d:\n\n", input); // CONTRIBUTOR: INGEL4
+    int n;
+    int b = input - 4;
     for(i = 0; i < input / 2; i++)
     {
-        for(s = 0; s < (input - 3) / 2; s++)
+        for(s = 0; s < (input - b) / 2; s++)
         {
             printf("_");
         }
-        printf("***");
-        for(s = 0; s < (input - 3) / 2; s++)
+        for (n = 0; n < b; n++)
+        {
+            printf("*");
+        }
+        for(s = 0; s < (input - n) / 2; s++)
         {
             printf("_");
         }

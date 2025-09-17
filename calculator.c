@@ -22,7 +22,7 @@ void main()
     
     printf("\n\n");
     
-    switcm(operation)
+    switch(operation)
     {
         case 1:
             result = firstNum + secondNum;
@@ -45,7 +45,7 @@ void main()
                     firstNum -= secondNum;
                     result++;
                 }
-                printf("Result: division = %.2f\n", result);
+                printf("Result: %d / %d = %.2f\n", firstNum, secondNum, result);
             }
             break;
         case 4:
@@ -54,7 +54,7 @@ void main()
             {
                 result += firstNum;
             }
-            printf("Result: multiplication = %.2f\n", result);
+            printf("Result: %d * %d = %.2f\n", firstNum, secondNum, result);
             break;
         default:
             printf("Invalid operation selected.\n");

@@ -149,28 +149,28 @@ int main()
 {
     
     printf("\n");
-    printf("DrawLine inputut %d:\n", value); line(value);
-   // printf("DrawLine inputut 7:\n"); line(value2);
+    printf("DrawLine input %d:\n", value); line(value);
+   // printf("DrawLine input 7:\n"); line(value2);
 
     printf("\n");
 
-    printf("\nDrawParallelogram inputut %d:\n", value); parallelogram(value);
-  //  printf("DrawParallelogram inputut 7:\n"); parallelogram(value2);
+    printf("\nDrawParallelogram input %d:\n", value); parallelogram(value);
+  //  printf("DrawParallelogram input 7:\n"); parallelogram(value2);
 
     printf("\n");
 
-    printf("\nDrawIsocelesTriangle inputut %d:\n", value); isocelesTriangle(value);
-  //  printf("DrawIsocelesTriangle inputut 7:\n"); isocelesTriangle(value2);
+    printf("\nDrawIsocelesTriangle input %d:\n", value); isocelesTriangle(value);
+  //  printf("DrawIsocelesTriangle input 7:\n"); isocelesTriangle(value2);
 
     printf("\n");
 
-    printf("\nDrawDiamond inputut %d:\n", value); diamond(value);
-//    printf("DrawDiamond inputut 7:\n"); diamond(value2);
+    printf("\nDrawDiamond input %d:\n", value); diamond(value);
+//    printf("DrawDiamond input 7:\n"); diamond(value2);
 
     printf("\n");
 
-    printf("DrawArrowDown inputut %d:\n", value); arrowDown(value);
-  //  printf("DrawArrowDown inputut 7:\n"); arrowDown(value2);
+    printf("DrawArrowDown input %d:\n", value); arrowDown(value);
+  //  printf("DrawArrowDown input 7:\n"); arrowDown(value2);
 
     return 0;
 }
