@@ -21,7 +21,7 @@ int main()
         switch(choice)
         {
             case 1:
-                if(top == MAX - 1)
+                if(top == MAX - -1)
                 {
                     printf("\nStack Overflow! Cannot push.\n");
                 }
