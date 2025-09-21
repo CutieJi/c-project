@@ -2,11 +2,11 @@
 
 int main()
 {
-    int id[10], present[10], absent[10], overtimeHours[10], undertimeHours[10], holidaysWorked[10];
-    char name[10][10], gender[10][10], position[10][20];
+    int id[10], present[10], absent[10], overtimeHours[10], undertimeHours[10], holidaysWorked[10], monthsWorked[10];
+    char name[10][10], gender[10][10], position[10][20], date[10][20];
     float salary[10], dailyRate[10], overtimeRate[10], cashAdvance[10], sss[10], incomeTax[10], pagibig[10], philhealth[10];
     float partialIncome[10], overtimePay[10], undertimeDeduction[10], grossIncome[10], totalDeduction[10], netIncome[10], bonus[10], holidayPay[10];
-    int n = 0, duplicate = 0, choice, i, searchId, found, j;
+    int n = 0, duplicate = 0, choice, i, found, j;
 
     // si n ay number ng employees na na add na sa system ay 10 lang ang max sa array dahil 10 lang ang kaya ng system dahil naka limit lang sa 10 employees
 
@@ -15,9 +15,9 @@ int main()
         printf("\n===== PAYROLL SYSTEM =====\n");
         printf("1. Add Employee\n");
         printf("2. View Employees\n");
-        printf("3. Update Employee\n");
-        printf("4. Delete Employee\n");
-        printf("5. Search for Employee\n");
+        printf("3. Search for Employee\n");
+        printf("4. Update Employee\n");
+        printf("5. Delete Employee\n");
         printf("6. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
@@ -25,7 +25,6 @@ int main()
         switch(choice)
         {
             case 1:
-            
             if(n >= 10)
             {
                 printf("\nYou have reached the maximum number of employees. Cannot add more!\n");
@@ -34,9 +33,9 @@ int main()
             {
                 printf("\nEnter Employee ID: ");
                 scanf("%d", &id[n]);
-                for(i = 0; i < n; i++) // loop para icheck kung may duplicate id
+                for(i = 0; i < n; i++) // loop para icheck kung may duplicate na id
                 {
-                    if(id[i] == id[n]) // if yung id sa array is equal sa id na input ng user
+                    if(id[i] == id[n]) // if yung id sa array is equal sa id na iniput ng user
                     {
                         printf("Error: Employee ID already exists!\n");
                         duplicate = 1;
@@ -57,6 +56,9 @@ int main()
                 printf("Enter Position: ");
                 scanf("%s", position[n]);
 
+                printf("Payroll Month: ");
+                scanf("%s", &date[n]);
+
                 printf("Enter Monthly Salary: ");
                 scanf("%f", &salary[n]);
 
@@ -66,6 +68,9 @@ int main()
                 scanf("%d", &present[n]);
 
                 absent[n] = 22 - present[n];
+
+                printf("Enter Number of Months Worked: ");
+                scanf("%d", &monthsWorked[n]);
 
                 printf("Enter Overtime Hours: ");
                 scanf("%d", &overtimeHours[n]);
@@ -85,9 +90,15 @@ int main()
                 overtimePay[n] = overtimeHours[n] * overtimeRate[n];
                 undertimeDeduction[n] = (dailyRate[n] / 8) * undertimeHours[n];
                 holidayPay[n] = dailyRate[n] * holidaysWorked[n] * 2;
-                bonus[n] = salary[n] / 12;
-                grossIncome[n] = partialIncome[n] + overtimePay[n] + holidayPay[n] + bonus[n];
-
+                bonus[n] = (salary[n] * monthsWorked[n]) / 12;
+                if(monthsWorked[n] <= 11) // gumamit ako ng if else para sa 13th month bonus kung kelan sya ibibigay example is lowest or equal sya kay 11 so hindi sya isasama sa gross income
+                {
+                    grossIncome[n] = partialIncome[n] + overtimePay[n] + holidayPay[n];
+                }
+                else
+                {
+                    grossIncome[n] = partialIncome[n] + overtimePay[n] + holidayPay[n] + bonus[n];
+                }
                 sss[n] = salary[n] * 0.05;          // pag 25k si salary then 1,250 ang deduction dahil 5% sya
                 philhealth[n] = salary[n] * 0.025;  // pag 25k si salary then 625 ang deduction dahil 2.5% sya
                 pagibig[n] = 100;
@@ -102,7 +113,7 @@ int main()
             }
 
             case 2:
-            printf("\n===== EMPLOYEE LIST =====\n");
+            printf("\n\033[1;33m===== EMPLOYEE LIST =====\033[0m\n");
             if(n == 0)
             {
                 printf("No employees found!\n");
@@ -115,6 +126,7 @@ int main()
                     printf("Name: %s\n", name[i]);
                     printf("Gender: %s\n", gender[i]);
                     printf("Position: %s\n", position[i]);
+                    printf("Payroll Month: %s\n", date[i]);
                     printf("Basic Salary: %.2f\n", salary[i]);
                     printf("Daily Rate: %.2f\n", dailyRate[i]);
                     printf("Days Present: %d\n", present[i]);
@@ -122,9 +134,16 @@ int main()
                     printf("Partial Income: %.2f\n", partialIncome[i]);
                     printf("Overtime Pay: %.2f\n", overtimePay[i]);
                     printf("Holiday Pay: %.2f\n", holidayPay[i]);
-                    printf("13th Month Bonus: %.2f\n", bonus[i]);
+                    if(monthsWorked[i] <= 11)
+                    {
+                        printf("13th Month Bonus \033[1;34m(Pending Bonus)\033[0m: %.2f\n", bonus[i]);
+                    }
+                    else
+                    {
+                        printf("13th Month Bonus: %.2f\n", bonus[i]);
+                    }
                     printf("Gross Income: %.2f\n", grossIncome[i]);
-                    printf("\n--- Deductions ---\n");
+                    printf("\n\033[1;31m--- Deductions ---\033[0m\n");
                     printf("Undertime Deduction: %.2f\n", undertimeDeduction[i]);
                     printf("Cash Advance: %.2f\n", cashAdvance[i]);
                     printf("SSS: %.2f\n", sss[i]);
@@ -133,18 +152,72 @@ int main()
                     printf("PhilHealth: %.2f\n", philhealth[i]);
                     printf("Undertime: %.2f\n", undertimeDeduction[i]);
                     printf("Total Deductions: %.2f\n", totalDeduction[i]);
-                    printf("Net Income: %.2f\n", netIncome[i]);
+                    printf("\n\033[1;32mNet Income: %.2f\033[0m\n", netIncome[i]);
+                    printf("=========================\n");
                 }
             }
             break;
 
             case 3:
+            printf("\nEnter Employee ID to Search: ");
+            scanf("%d", &id[n]);
+            found = -1;
+
+            for(i = 0; i < n; i++)
+            {
+                if(id[i] == id[n])
+                {
+                    found = i;
+                    break;
+                }
+            }
+            if(found != -1)
+            {
+                printf("\n\033[1;33m===== EMPLOYEE FOUND =====\033[0m\n");
+                printf("ID: %d\n", id[found]);
+                printf("Name: %s\n", name[found]);
+                printf("Gender: %s\n", gender[found]);
+                printf("Position: %s\n", position[found]);
+                printf("Payroll Month: %s\n", date[found]);
+                printf("Basic Salary: %.2f\n", salary[found]);
+                printf("Daily Rate: %.2f\n", dailyRate[found]);
+                printf("Days Present: %d\n", present[found]);
+                printf("Days Absent: %d\n", absent[found]);
+                printf("Partial Income: %.2f\n", partialIncome[found]);
+                printf("Overtime Pay: %.2f\n", overtimePay[found]);
+                printf("Holiday Pay: %.2f\n", holidayPay[found]);
+                if(monthsWorked[i] <= 11)
+                    {
+                        printf("13th Month Bonus \033[1;34m(Pending Bonus)\033[0m: %.2f\n", bonus[found]);
+                    }
+                    else
+                    {
+                        printf("13th Month Bonus: %.2f\n", bonus[found]);
+                    }
+                printf("Gross Income: %.2f\n", grossIncome[found]);
+                printf("\n\033[1;31m--- Deductions ---\033[0m\n");
+                printf("Undertime Deduction: %.2f\n", undertimeDeduction[found]);
+                printf("Cash Advance: %.2f\n", cashAdvance[found]);
+                printf("SSS: %.2f\n", sss[found]);
+                printf("Income Tax: %.2f\n", incomeTax[found]);
+                printf("PAG-IBIG: %.2f\n", pagibig[found]);
+                printf("PhilHealth: %.2f\n", philhealth[found]);
+                printf("Total Deductions: %.2f\n", totalDeduction[found]);
+                printf("\n\033[1;32mNet Income: %.2f\033[0m\n", netIncome[found]);
+            }
+            else
+            {
+                printf("\nEmployee not found!\n");
+            }
+            break;
+
+            case 4:
             printf("\nEnter Employee ID to Update: ");
-            scanf("%d", &searchId);
+            scanf("%d", &id[n]);
             found = -1; // -1 means hindi pa nahanap yung id
             for(i = 0; i < n; i++)
             {
-                if(id[i] == searchId) // if yung id sa array is equal sa id na hinahanap ng user
+                if(id[i] == id[n]) // if yung id sa array is equal sa id na hinahanap ng user
                 {
                     found = i;
                     break;
@@ -152,8 +225,14 @@ int main()
             }
             if(found != -1) // if si found is not equal to -1 means nahanap na yung id
             {
+                printf("Enter New Payroll Month: ");
+                scanf("%s", &date[found]);
+
                 printf("Enter New Monthly Salary: ");
                 scanf("%f", &salary[found]);
+
+                printf("Enter New Months Worked: ");
+                scanf("%d", &monthsWorked[found]);
 
                 dailyRate[found] = salary[found] / 22;
 
@@ -179,7 +258,15 @@ int main()
                 overtimePay[found] = overtimeHours[found] * overtimeRate[found];
                 undertimeDeduction[found] = (dailyRate[found] / 8) * undertimeHours[found];
                 holidayPay[found] = dailyRate[found] * holidaysWorked[found] * 2;
-                bonus[found] = salary[found] / 12;
+                bonus[found] = (salary[found] * monthsWorked[found]) / 12;
+                if(monthsWorked[n] < 12)
+                {
+                    grossIncome[found] = partialIncome[found] + overtimePay[found] + holidayPay[found];
+                }
+                else
+                {
+                    grossIncome[found] = partialIncome[found] + overtimePay[found] + holidayPay[found] + bonus[found];
+                }
                 grossIncome[found] = partialIncome[found] + overtimePay[found] + holidayPay[found] + bonus[found];
                 totalDeduction[found] = cashAdvance[found] + sss[found] + incomeTax[found] + pagibig[found] + philhealth[found] + undertimeDeduction[found];
                 netIncome[found] = grossIncome[found] - totalDeduction[found];
@@ -192,13 +279,13 @@ int main()
             }
             break;
 
-            case 4:
+            case 5:
             printf("\nEnter Employee ID to Delete: ");
-            scanf("%d", &id);
+            scanf("%d", &id[n]);
             found = -1;
             for(i = 0; i < n; i++)
             {
-                if(id[i] == searchId)
+                if(id[i] == id[n])
                 {
                     found = i;
                     break;
@@ -210,6 +297,7 @@ int main()
                 {
                     id[i] = id[i+1];
                     salary[i] = salary[i+1];
+                    monthsWorked[i] = monthsWorked[i+1];
                     dailyRate[i] = dailyRate[i+1];
                     present[i] = present[i+1];
                     absent[i] = absent[i+1];
@@ -235,6 +323,7 @@ int main()
                         name[i][j] = name[i+1][j];
                         gender[i][j] = gender[i+1][j];
                         position[i][j] = position[i+1][j];
+                        date[i][j] = date[i+1][j];
                     }
                 }
                 n--;
@@ -246,56 +335,12 @@ int main()
             }
             break;
 
-            case 5:
-            printf("\nEnter Employee ID to Search: ");
-            scanf("%d", &searchId);
-            found = -1;
-
-            for(i = 0; i < n; i++) {
-                if(id[i] == searchId)
-                {
-                    found = i;
-                    break;
-                }
-            }
-            if(found != -1)
-            {
-                printf("\n===== EMPLOYEE FOUND =====\n");
-                printf("ID: %d\n", id[found]);
-                printf("Name: %s\n", name[found]);
-                printf("Gender: %s\n", gender[found]);
-                printf("Position: %s\n", position[found]);
-                printf("Basic Salary: %.2f\n", salary[found]);
-                printf("Daily Rate: %.2f\n", dailyRate[found]);
-                printf("Days Present: %d\n", present[found]);
-                printf("Days Absent: %d\n", absent[found]);
-                printf("Partial Income: %.2f\n", partialIncome[found]);
-                printf("Overtime Pay: %.2f\n", overtimePay[found]);
-                printf("Holiday Pay: %.2f\n", holidayPay[found]);
-                printf("13th Month Bonus: %.2f\n", bonus[found]);
-                printf("Gross Income: %.2f\n", grossIncome[found]);
-                printf("\n--- Deductions ---\n");
-                printf("Undertime Deduction: %.2f\n", undertimeDeduction[found]);
-                printf("Cash Advance: %.2f\n", cashAdvance[found]);
-                printf("SSS: %.2f\n", sss[found]);
-                printf("Income Tax: %.2f\n", incomeTax[found]);
-                printf("PAG-IBIG: %.2f\n", pagibig[found]);
-                printf("PhilHealth: %.2f\n", philhealth[found]);
-                printf("Total Deductions: %.2f\n", totalDeduction[found]);
-                printf("Net Income: %.2f\n", netIncome[found]);
-            }
-            else
-            {
-                printf("\nEmployee not found!\n");
-            }
+            case 6:
+            printf("\nExiting...\n");
             break;
 
-            case 6:
-                printf("\nExiting...\n");
-                break;
-
             default:
-                printf("\nInvalid choice!\n");
+            printf("\nInvalid choice!\n");
         }
     }  
     while(choice != 6);
